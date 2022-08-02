@@ -2,32 +2,28 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
-import { PostForm } from "./components/PostForm";
-import { PostList } from "./components/PostList";
-import { Post } from "./interfaces/index";
-import { getPosts } from "./lib/api/posts";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Router } from "./router/Router";
 
 function App() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const handleGetPost = async () => {
-    try {
-      const res = await getPosts();
+  // const [posts, setPosts] = useState<Post[]>([]);
+  // const handleGetPost = async () => {
+  //   try {
+  //     const res = await getPosts();
 
-      if (res.status === 200) {
-        setPosts(res.data.posts);
-      } else {
-        console.log(res.data.message);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     if (res.status === 200) {
+  //       setPosts(res.data.posts);
+  //     } else {
+  //       console.log(res.data.message);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    handleGetPost();
-  }, []);
+  // useEffect(() => {
+  //   handleGetPost();
+  // }, []);
 
   const [loggedInStatus, setLoggedInStatus] = useState("未ログイン");
   const [user, setUser] = useState({});
@@ -57,6 +53,7 @@ function App() {
         if (res.data.logged_in && loggedInStatus === "未ログイン") {
           setLoggedInStatus("ログインなう");
           setUser(res.data.user);
+          console.log(user);
         } else if (!res.data.logged_in && loggedInStatus === "ログイン") {
           setLoggedInStatus("未ログイン");
           setUser({});
@@ -66,32 +63,13 @@ function App() {
   };
   return (
     <>
-      <PostForm posts={posts} setPosts={setPosts} />
+      {/* <PostForm posts={posts} setPosts={setPosts} /> */}
       {/* <PostList posts={posts} setPosts={setPosts} /> */}
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path={"/"}
-            element={
-              <Home
-                handleLogin={handleLogin}
-                handleLogout={handleLogout}
-                loggedInStatus={loggedInStatus}
-              />
-            }
-          />
-          <Route
-            path={"/dashboard"}
-            element={<Dashboard loggedInStatus={loggedInStatus} />}
-          />
-          {/* <Route
-            path={"/dashboard"}
-            render={(props) => (
-              <Home {...props} loggedInStatus={loggedInStatus} />
-            )}
-          /> */}
-        </Routes>
-      </BrowserRouter>
+      <ChakraProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </ChakraProvider>
     </>
   );
 }
