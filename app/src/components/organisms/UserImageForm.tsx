@@ -14,13 +14,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { UserImage } from "../../type/api/UserImage";
 
-import { UserProfile } from "../../type/api/UserProfile";
-
-const UserImageForm = (props: any) => {
-  const { register, handleSubmit } = useForm<UserProfile>();
+const UserImageForm = memo((props: any) => {
+  const { fetchUserImage, setIsImage } = props;
+  const { register, handleSubmit } = useForm<UserImage>();
 
   const onSubmit = (data: any) => {
     const createFormData = () => {
@@ -40,10 +40,11 @@ const UserImageForm = (props: any) => {
         .then((res) => console.log(res.data))
         .catch((err) => console.log(err));
     };
-
     sendFormData();
 
-    // setIsEdit(false);
+    setTimeout(() => {
+      fetchUserImage();
+    }, 1000);
   };
 
   return (
@@ -55,6 +56,6 @@ const UserImageForm = (props: any) => {
       <button type="submit">送信</button>
     </form>
   );
-};
+});
 
 export default UserImageForm;

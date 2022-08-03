@@ -3,14 +3,14 @@ import React, { memo } from "react";
 
 export const MenuList = memo(() => {
   return (
-    <Box>
-      <Box p="4" w="40vw" bg="teal" h="20vh">
+    <Box maxW="1200px">
+      <Box p="4" bg="teal">
         マイページ
       </Box>
-      <Box p="4" w="40vw" bg="teal.500" h="20vh">
+      <Box p="4" bg="teal.500">
         掲示板
       </Box>
-      <Box p="4" w="40vw" bg="teal.100" h="20vh">
+      <Box p="4" bg="teal.100">
         メッセージ
       </Box>
     </Box>

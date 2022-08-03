@@ -20,7 +20,7 @@ export const useUserProfile = () => {
 
   const fetchUserProfile = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/user_profiles", {
+      .get("http://localhost:3000/api/v1/user_profiles/new", {
         withCredentials: true,
       })
       .then((res) => {
