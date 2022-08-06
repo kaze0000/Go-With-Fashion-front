@@ -12,8 +12,7 @@ export const HeaderLayout = memo((props: Props) => {
     <Box maxW="1280px" mx="auto">
       <Grid
         templateAreas={`"header header"
-                  "nav main"
-                  "nav footer"`}
+                  "nav main"`}
         gridTemplateRows={"50px 1fr 30px"}
         gridTemplateColumns={"300px 1fr"}
         h="200px"
@@ -23,14 +22,11 @@ export const HeaderLayout = memo((props: Props) => {
         <GridItem pl="2" bg="orange.300" area={"header"}>
           Header
         </GridItem>
-        <GridItem bg="pink.300" area={"nav"}>
+        <GridItem bg="white.300" area={"nav"}>
           <MenuList />
         </GridItem>
-        <GridItem pl="2" bg="green.300" area={"main"}>
+        <GridItem pl="2" bg="white.300" area={"main"}>
           {children}
-        </GridItem>
-        <GridItem pl="2" bg="blue.300" area={"footer"}>
-          Footer
         </GridItem>
       </Grid>
     </Box>

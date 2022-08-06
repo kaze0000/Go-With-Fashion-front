@@ -46,7 +46,6 @@ const Mypage = () => {
   };
 
   const onClickTagCloseButton = (brand_id: any) => {
-    console.log(brand_id);
     axios
       .delete(`http://localhost:3000/api/v1/brands/${brand_id}`, {
         withCredentials: true,
@@ -55,7 +54,7 @@ const Mypage = () => {
         console.log(res.data);
         setTimeout(() => {
           fetchBrands();
-        }, 500);
+        }, 100);
       })
       .catch((err) => console.log(err));
   };
@@ -131,7 +130,9 @@ const Mypage = () => {
                 : "未入力"}
             </ListItem>
           </List>
-          <Button onClick={onClickUserProfileForm}>プロフィールを編集</Button>
+          <Button onClick={onClickUserProfileForm}>
+            プロフィールを入力/編集
+          </Button>
         </Box>
       )}
     </HeaderLayout>

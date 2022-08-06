@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Login from "../components/pages/Login";
 import Mypage from "../components/pages/Mypage";
+import Posts from "../components/pages/Posts";
 import { SignUp } from "../components/pages/SignUp";
 // import { LoginUserProvider } from "../providers/LoginUserProvider";
 
@@ -14,6 +15,7 @@ export const Router = memo(() => {
       <Route path="/sign_up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/mypage" element={<Mypage />} />
+      <Route path="/posts" element={<Posts />} />
     </Routes>
     // </LoginUserProvider>
   );
