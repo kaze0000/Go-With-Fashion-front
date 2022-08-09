@@ -3,11 +3,16 @@ import {
   Button,
   Divider,
   Flex,
+  FormControl,
+  FormLabel,
   Heading,
   Image,
+  Input,
+  InputLeftAddon,
   List,
   ListIcon,
   ListItem,
+  Select,
   Stack,
   Text,
   Textarea,
@@ -66,91 +71,93 @@ const UserProfileForm = (props: any) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>お名前</label>
-      <div>
-        {userProfile ? (
-          <input
-            defaultValue={userProfile.name}
-            type="text"
-            {...register("name")}
-          />
-        ) : (
-          <input
-            placeholder="ユーザー名を入力してください。"
-            type="text"
-            {...register("name")}
-          />
-        )}
-      </div>
-      <select {...register("gender")}>
-        <option value="1">man</option>
-        <option value="2">women</option>
-      </select>
-      <label>年齢</label>
-      <div>
-        {userProfile ? (
-          <input
-            defaultValue={userProfile.age}
-            type="number"
-            {...register("age")}
-          />
-        ) : (
-          <input type="number" {...register("age")} />
-        )}
-      </div>
-      <label>自己紹介</label>
-      <div>
-        {userProfile ? (
-          <input
-            defaultValue={userProfile.self_introducement}
-            type="text"
-            {...register("self_introducement")}
-          />
-        ) : (
-          <input
-            placeholder="自己紹介文を入力してください。"
-            type="text"
-            {...register("self_introducement")}
-          />
-        )}
-      </div>
-      <label>twitter</label>
-      <div>
-        {userProfile ? (
-          <input
-            defaultValue={userProfile.twitter}
-            type="text"
-            {...register("twitter")}
-          />
-        ) : (
-          <input
-            placeholder="TwitterのアカウントURLを入力してください。"
-            type="text"
-            {...register("twitter")}
-          />
-        )}
-      </div>
-      <label>insta</label>
-      <div>
-        {userProfile ? (
-          <input
-            defaultValue={userProfile.instagram}
-            type="text"
-            {...register("instagram")}
-          />
-        ) : (
-          <input
-            placeholder="InstagramのアカウントURLを入力してください。"
-            type="text"
-            {...register("instagram")}
-          />
-        )}
-      </div>
-      <label>好きなブランド</label>
-      <input {...register("favorite_brands")} />
-      <button type="submit">送信</button>
-    </form>
+    <Box mx="auto" mt="5%">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl>
+          <FormLabel>名前</FormLabel>
+          {userProfile ? (
+            <Input
+              defaultValue={userProfile.name}
+              type="text"
+              {...register("name")}
+            />
+          ) : (
+            <Input
+              placeholder="ユーザー名を入力してください。"
+              type="text"
+              {...register("name")}
+            />
+          )}
+
+          <FormLabel>性別</FormLabel>
+          <Select {...register("gender")} defaultValue={userProfile.gender}>
+            <option value="0">未選択</option>
+            <option value="1">男性</option>
+            <option value="2">女性</option>
+          </Select>
+
+          <FormLabel>年齢</FormLabel>
+          {userProfile ? (
+            <Input
+              defaultValue={userProfile.age}
+              type="number"
+              {...register("age")}
+            />
+          ) : (
+            <Input type="number" {...register("age")} />
+          )}
+
+          <FormLabel>自己紹介</FormLabel>
+          {userProfile ? (
+            <Input
+              defaultValue={userProfile.self_introducement}
+              type="text"
+              {...register("self_introducement")}
+            />
+          ) : (
+            <Input
+              placeholder="自己紹介文を入力してください。"
+              type="text"
+              {...register("self_introducement")}
+            />
+          )}
+
+          <FormLabel>twitter URL</FormLabel>
+          {userProfile ? (
+            <Input
+              defaultValue={userProfile.twitter}
+              type="text"
+              {...register("twitter")}
+            />
+          ) : (
+            <Input
+              placeholder="TwitterのアカウントURLを入力してください。"
+              type="text"
+              {...register("twitter")}
+            />
+          )}
+
+          <FormLabel>Instagram URL</FormLabel>
+          {userProfile ? (
+            <Input
+              defaultValue={userProfile.instagram}
+              type="text"
+              {...register("instagram")}
+            />
+          ) : (
+            <Input
+              placeholder="InstagramのアカウントURLを入力してください。"
+              type="text"
+              {...register("instagram")}
+            />
+          )}
+
+          <FormLabel>好きなブランド</FormLabel>
+          <Input {...register("favorite_brands")} mb="4" />
+          <Button type="submit">更新</Button>
+        </FormControl>
+      </form>
+    </Box>
   );
 };
 

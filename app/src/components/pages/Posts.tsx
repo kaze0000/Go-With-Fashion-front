@@ -13,6 +13,7 @@ import {
   Text,
   TagLabel,
   Tag,
+  Spinner,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -36,6 +37,7 @@ const Posts = () => {
     deletePost,
     fetchPost,
     postAndUserProfileHash,
+    isLoading,
   } = usePost();
   const { user, fetchLoggedInUser } = useLoggedInUser();
 
@@ -59,38 +61,66 @@ const Posts = () => {
     fetchLoggedInUser();
   }, [isPost]);
 
-  console.log(postAndUserProfileHash);
   return (
     <HeaderLayout>
       <Flex>
-        <Box borderRight="1px solid #EDF2F7">
+        <Box
+          borderRight="1px solid #EDF2F7"
+          px="2%"
+          maxW="420px"
+          w="100%"
+          textAlign={"center"}
+        >
           <Heading as="h2" my="4" textAlign="center">
             <Search2Icon w="7" mr="4" />
             掲示板
           </Heading>
           <Divider mb="6" />
-          {postsAndUserProfilesHash &&
-            numberOfElementsArray.map((num: any) => (
-              <Box
-                onClick={() =>
-                  fetchPost(postsAndUserProfilesHash[num][0].post.id)
-                }
-              >
-                <PostCard
-                  postAndUserProfileHash={postAndUserProfileHash}
-                  userProfile={postsAndUserProfilesHash[num][0].user_profile}
-                  post={postsAndUserProfilesHash[num][0].post}
-                  userImage={postsAndUserProfilesHash[num][0].user_image}
-                  postedBrands={postsAndUserProfilesHash[num][0].posted_brands}
-                  postedArea={postsAndUserProfilesHash[num][0].posted_area}
-                  onClickDeletePost={onClickDeletePost}
-                  isPostShow={isPostShow}
-                  setIsPostShow={setIsPostShow}
-                  user={user}
-                />
+          <Box overflow={"auto"} h="100vh">
+            {isLoading ? (
+              <Spinner display={"block"} mx="auto" />
+            ) : (
+              <Box>
+                {postsAndUserProfilesHash &&
+                  numberOfElementsArray.map((num: any) => (
+                    <Box
+                      onClick={() =>
+                        fetchPost(postsAndUserProfilesHash[num][0].post.id)
+                      }
+                    >
+                      <PostCard
+                        postAndUserProfileHash={postAndUserProfileHash}
+                        userProfile={
+                          postsAndUserProfilesHash[num][0].user_profile
+                        }
+                        post={postsAndUserProfilesHash[num][0].post}
+                        userImage={postsAndUserProfilesHash[num][0].user_image}
+                        postedBrands={
+                          postsAndUserProfilesHash[num][0].posted_brands
+                        }
+                        postedArea={
+                          postsAndUserProfilesHash[num][0].posted_area
+                        }
+                        onClickDeletePost={onClickDeletePost}
+                        isPostShow={isPostShow}
+                        setIsPostShow={setIsPostShow}
+                        user={user}
+                      />
+                    </Box>
+                  ))}
               </Box>
-            ))}
-          <Button onClick={onClickPostForm}>投稿する</Button>
+            )}
+          </Box>
+          <Button
+            onClick={onClickPostForm}
+            position="fixed"
+            transform="translate(-50%, -50%)"
+            bottom="5%"
+            backgroundColor={"yellow"}
+            _hover={{ opacity: 0.8 }}
+          >
+            投稿する
+          </Button>
         </Box>
         {isPost && <PostForm setIsPost={setIsPost} />}
         {isPostShow && postAndUserProfileHash && (

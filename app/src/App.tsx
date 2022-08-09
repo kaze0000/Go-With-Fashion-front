@@ -6,25 +6,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Router } from "./router/Router";
 
 function App() {
-  // const [posts, setPosts] = useState<Post[]>([]);
-  // const handleGetPost = async () => {
-  //   try {
-  //     const res = await getPosts();
-
-  //     if (res.status === 200) {
-  //       setPosts(res.data.posts);
-  //     } else {
-  //       console.log(res.data.message);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleGetPost();
-  // }, []);
-
   const [loggedInStatus, setLoggedInStatus] = useState("未ログイン");
   const [user, setUser] = useState({});
 
@@ -54,6 +35,7 @@ function App() {
           setLoggedInStatus("ログインなう");
           setUser(res.data.user);
           console.log(user);
+          console.log(loggedInStatus);
         } else if (!res.data.logged_in && loggedInStatus === "ログイン") {
           setLoggedInStatus("未ログイン");
           setUser({});

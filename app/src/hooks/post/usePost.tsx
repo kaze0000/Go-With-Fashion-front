@@ -4,6 +4,8 @@ import { Post } from "../../type/api/Post";
 
 // apiの実行部分をカスタムフックに閉じる
 export const usePost = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   // #indexで対応するpostやuserProfileを全てとってくる
   const [postsAndUserProfilesHash, setPostsAndUserProfilesHash] =
     useState<any>(null);
@@ -28,6 +30,8 @@ export const usePost = () => {
         // 力技でpostとpostに関連したuserProfileを表示できるようにした
         const numberOfElements = Object.keys(res.data).length;
         setNumberOfElementsArray([...Array(numberOfElements)].map((_, i) => i));
+
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -63,5 +67,6 @@ export const usePost = () => {
     numberOfElementsArray,
     fetchPost,
     postAndUserProfileHash,
+    isLoading,
   };
 };

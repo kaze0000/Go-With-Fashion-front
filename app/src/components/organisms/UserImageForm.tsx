@@ -3,8 +3,11 @@ import {
   Button,
   Divider,
   Flex,
+  FormControl,
+  FormLabel,
   Heading,
   Image,
+  Input,
   List,
   ListIcon,
   ListItem,
@@ -49,11 +52,13 @@ const UserImageForm = memo((props: any) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>プロフ画像</label>
-      <div>
+      <FormLabel>プロフィール画像</FormLabel>
+      <FormControl>
         <input type="file" {...register("image")} />
-      </div>
-      <button type="submit">送信</button>
+        <Button backgroundColor={"yellow"} type="submit">
+          更新
+        </Button>
+      </FormControl>
     </form>
   );
 });

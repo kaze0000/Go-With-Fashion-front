@@ -30,7 +30,7 @@ export const PostCard = memo((props: any) => {
 
   return (
     <>
-      <Box onClick={() => setIsPostShow(!isPostShow)}>
+      <Box onClick={() => setIsPostShow(true)}>
         <Flex>
           <Box bg="white" mx="2%" my="4%" p="1%">
             <Flex align="center" justify="flex-start">
@@ -70,7 +70,7 @@ export const PostCard = memo((props: any) => {
                       key={postedBrand.id}
                       borderRadius="full"
                       variant="solid"
-                      colorScheme="orange"
+                      colorScheme="gray"
                       mr="2"
                     >
                       <TagLabel>{postedBrand.name}</TagLabel>

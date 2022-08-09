@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import React, { memo } from "react";
 import Modal from "react-modal";
+import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
 
 import { usePost } from "../../hooks/post/usePost";
 import { Brand } from "../../type/api/Brand";
@@ -40,8 +41,11 @@ export const PostShow = memo((props: any) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const { fetchPost } = usePost();
+
+  const { createChatRoom } = useChatRoom();
+
   return (
-    <Box mx="auto" pos="relative">
+    <Box mx="auto" pos="relative" mt="5%">
       <CloseIcon
         pos="absolute"
         right="-10"
@@ -49,7 +53,15 @@ export const PostShow = memo((props: any) => {
         onClick={() => setIsPostShow(false)}
       />
       <Box maxW="300px" mx="auto">
-        <Image w="100%" h="auto" src={userImage.image.url} />
+        <Image
+          w="100%"
+          h="auto"
+          src={
+            userImage
+              ? userImage.image.url
+              : "http://localhost:3000/fallback/default.png"
+          }
+        />
       </Box>
       <Stack spacing="2" my="2" maxW="300px">
         <Box>
@@ -81,7 +93,13 @@ export const PostShow = memo((props: any) => {
         <Flex justifyContent="space-between">
           <CommonModal buttonName="プロフィール">
             <Box maxW="300px" mx="auto">
-              <Image src={userImage.image.url} />
+              <Image
+                src={
+                  userImage
+                    ? userImage.image.url
+                    : "http://localhost:3000/fallback/default.png"
+                }
+              />
             </Box>
             <Text fontWeight="bold" my="4">
               自己紹介
@@ -109,7 +127,9 @@ export const PostShow = memo((props: any) => {
               </ListItem>
             </List>
           </CommonModal>
-          <Button>メッセージを送る</Button>
+          <Button onClick={() => createChatRoom(post.user_id)}>
+            メッセージを送る
+          </Button>
         </Flex>
       )}
     </Box>

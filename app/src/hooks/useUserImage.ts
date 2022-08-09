@@ -5,7 +5,7 @@ import { UserProfile } from "../type/api/UserProfile";
 
 // apiの実行部分をカスタムフックに閉じる
 export const useUserImage = () => {
-  // const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [userImage, setUserImage] = useState<UserImage | null>(null);
 
   const fetchUserImage = useCallback(() => {
@@ -14,13 +14,14 @@ export const useUserImage = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
         setUserImage(res.data);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
   return {
     fetchUserImage,
     userImage,
+    isLoading,
   };
 };
