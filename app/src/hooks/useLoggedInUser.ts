@@ -18,9 +18,8 @@ export const useLoggedInUser = () => {
           console.log(res.data.user);
           setUser(res.data.user);
         } else if (!res.data.logged_in) {
-          // setUser(null);
-          // navigation("/login");
-          // showMessage({ title: "ログインしてください。", status: "info" });
+          setUser(null);
+          console.log("ログインしていません。");
         }
       })
       .catch((err) => console.log("ログインエラー", err));

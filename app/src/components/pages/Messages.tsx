@@ -33,7 +33,8 @@ import { PostShow } from "../organisms/PostShow";
 import { HeaderLayout } from "../templates/HeaderLayout";
 
 export const Messages = () => {
-  // const [isPost, setIsPost] = useState(false);
+  const { fetchLoggedInUser, user } = useLoggedInUser();
+
   const [isChatRoomShow, setIsChatRoomShow] = useState(false);
   // const {
   //   fetchPosts,
@@ -79,6 +80,7 @@ export const Messages = () => {
   // }, [isPost]);
   console.log(chatMessage);
   useEffect(() => {
+    fetchLoggedInUser();
     fetchChatRooms();
   }, []);
 
@@ -94,7 +96,7 @@ export const Messages = () => {
           </Heading>
           <Divider mb="6" />
           <Box overflow={"auto"} h="100vh">
-            {isLoading ? (
+            {isLoading && user ? (
               <Spinner display={"block"} mx="auto" />
             ) : (
               <Box>

@@ -17,9 +17,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+
 import { usePost } from "../../hooks/post/usePost";
 import { useLoggedInUser } from "../../hooks/useLoggedInUser";
 import { useLogin } from "../../hooks/useLogin";
+import { useMessage } from "../../hooks/useMessage";
 import { Brand } from "../../type/api/Brand";
 import Subject from "../atoms/Subject";
 import { PostCard } from "../organisms/PostCard";
@@ -30,6 +32,9 @@ import { HeaderLayout } from "../templates/HeaderLayout";
 const Posts = () => {
   const [isPost, setIsPost] = useState(false);
   const [isPostShow, setIsPostShow] = useState(false);
+
+  const { showMessage } = useMessage();
+
   const {
     postsAndUserProfilesHash,
     numberOfElementsArray,
@@ -39,10 +44,14 @@ const Posts = () => {
     postAndUserProfileHash,
     isLoading,
   } = usePost();
-  const { user, fetchLoggedInUser } = useLoggedInUser();
+  const { fetchLoggedInUser, user } = useLoggedInUser();
 
   const onClickPostForm = () => {
-    setIsPost(!isPost);
+    if (user) {
+      setIsPost(!isPost);
+    } else {
+      showMessage({ title: "ログインしてください。", status: "info" });
+    }
   };
 
   const onClickDeletePost = (post_id: any) => {

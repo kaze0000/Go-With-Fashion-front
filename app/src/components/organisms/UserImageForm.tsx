@@ -19,16 +19,23 @@ import {
 import axios from "axios";
 import React, { memo, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMessage } from "../../hooks/useMessage";
 import { UserImage } from "../../type/api/UserImage";
 
 const UserImageForm = memo((props: any) => {
-  const { fetchUserImage, setIsImage } = props;
+  const { fetchUserImage, user } = props;
+  const { showMessage } = useMessage();
+
   const { register, handleSubmit } = useForm<UserImage>();
 
   const onSubmit = (data: any) => {
+    if (!user) {
+      showMessage({ title: "ログインしてください。", status: "info" });
+      return;
+    }
+
     const createFormData = () => {
       const formData = new FormData();
-      // if (!image) return;
       formData.append("user_image[image]", data.image[0]);
       return formData;
     };

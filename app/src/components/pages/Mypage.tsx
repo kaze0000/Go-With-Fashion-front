@@ -35,11 +35,14 @@ import UserImageForm from "../organisms/UserImageForm";
 import UserProfileForm from "../organisms/UserProfileForm";
 import { HeaderLayout } from "../templates/HeaderLayout";
 import { Link } from "react-router-dom";
+import { useMessage } from "../../hooks/useMessage";
 
 const Mypage = () => {
   const [isEdit, setIsEdit] = useState(false);
 
-  const { fetchLoggedInUser } = useLoggedInUser();
+  const { showMessage } = useMessage();
+
+  const { fetchLoggedInUser, user } = useLoggedInUser();
   const { fetchUserProfile, userProfile } = useUserProfile();
   const { fetchUserImage, userImage, isLoading } = useUserImage();
   const { fetchBrands, brands } = useBrand();
@@ -47,7 +50,11 @@ const Mypage = () => {
   const genderList = ["未入力", "男性", "女性"];
 
   const onClickUserProfileForm = () => {
-    setIsEdit(!isEdit);
+    if (user) {
+      setIsEdit(!isEdit);
+    } else {
+      showMessage({ title: "ログインしてください。", status: "info" });
+    }
   };
 
   const onClickTagCloseButton = (brand_id: any) => {
@@ -109,7 +116,7 @@ const Mypage = () => {
               )}
             </Box>
             <Box my="4">
-              <UserImageForm fetchUserImage={fetchUserImage} />
+              <UserImageForm fetchUserImage={fetchUserImage} user={user} />
             </Box>
             <Divider />
             <Box my="4">
