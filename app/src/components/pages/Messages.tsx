@@ -1,4 +1,4 @@
-import { AtSignIcon, Search2Icon } from "@chakra-ui/icons";
+import { FaTelegramPlane } from "react-icons/fa";
 import {
   Box,
   Button,
@@ -87,7 +87,9 @@ export const Messages = () => {
       <Flex>
         <Box borderRight="1px solid #EDF2F7" maxW="420px" w="100%">
           <Heading as="h2" my="4" textAlign="center">
-            <Search2Icon w="7" mr="4" />
+            <Box display={"inline-block"} fontSize="2rem">
+              <FaTelegramPlane />
+            </Box>
             メッセージ
           </Heading>
           <Divider mb="6" />
@@ -112,6 +114,7 @@ export const Messages = () => {
                         // post={postsAndUserProfilesHash[num][0].post}
                         userImage={chatRoomIndexHash[num]["user_image"]}
                         chatRoom={chatRoomIndexHash[num]["chat_room"]}
+                        chatMessages={chatRoomIndexHash[num]["chat_messages"]}
                         // onClickDeletePost={onClickDeletePost}
                         isChatRoomShow={isChatRoomShow}
                         setIsChatRoomShow={setIsChatRoomShow}

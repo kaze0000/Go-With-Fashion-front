@@ -76,7 +76,7 @@ const Mypage = () => {
   return (
     <HeaderLayout>
       <Flex>
-        <Box borderRight="1px solid #EDF2F7" px="2%">
+        <Box borderRight="1px solid #EDF2F7" px="2%" maxW="420px" w="100%">
           <Heading
             as="h2"
             my="4"
@@ -93,14 +93,12 @@ const Mypage = () => {
             プロフィール
           </Heading>
           <Divider mb="6" />
-          <Box overflow={"auto"} h="100vh" px="2%">
-            <Box>
+          <Box overflow={"auto"} px="2%">
+            <Box maxW={"390px"} w="100%">
               {isLoading ? (
                 <Spinner display={"block"} mx="auto" />
               ) : (
                 <Image
-                  w="100%"
-                  h="auto"
                   src={
                     userImage
                       ? userImage.image.url
@@ -140,7 +138,7 @@ const Mypage = () => {
                   </Link>
                 ) : (
                   <Box display="inline-block" ml="2">
-                    <ImTwitter fontSize={"1,5rem"} />
+                    <ImTwitter fontSize={"1.5rem"} />
                   </Box>
                 )}
                 {userProfile && userProfile.instagram ? (
@@ -178,6 +176,7 @@ const Mypage = () => {
               <ListItem>
                 <ListIcon color="green.500" />
                 好きなブランド:
+                <br />
                 {brands
                   ? brands.map((brand) => (
                       <Tag
@@ -186,6 +185,8 @@ const Mypage = () => {
                         borderRadius="full"
                         variant="solid"
                         colorScheme="gray"
+                        mt="2"
+                        mr="2"
                       >
                         <TagLabel>{brand.name}</TagLabel>
                         <TagCloseButton
@@ -196,9 +197,15 @@ const Mypage = () => {
                   : "未入力"}
               </ListItem>
             </List>
-            <Button backgroundColor={"yellow"} onClick={onClickUserProfileForm}>
-              プロフィールを入力 / 編集
-            </Button>
+            <Box textAlign={"center"}>
+              <Button
+                backgroundColor={"yellow"}
+                _hover={{ opacity: 0.8 }}
+                onClick={onClickUserProfileForm}
+              >
+                プロフィールを入力 / 編集
+              </Button>
+            </Box>
           </Box>
         </Box>
         {isEdit && (

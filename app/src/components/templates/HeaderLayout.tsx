@@ -30,7 +30,7 @@ export const HeaderLayout = memo((props: Props) => {
         <GridItem bg="white.300" area={"nav"}>
           <MenuList />
         </GridItem>
-        <GridItem pl="2" bg="white.300" area={"main"}>
+        <GridItem pl="2" mb="10" bg="white.300" area={"main"}>
           {children}
         </GridItem>
       </Grid>

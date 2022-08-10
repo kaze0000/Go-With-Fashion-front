@@ -78,7 +78,7 @@ export const ChatRoomShow = (props: any) => {
             );
           } else {
             return (
-              <Box>
+              <Box my="5">
                 <Flex>
                   <Box>
                     <Image

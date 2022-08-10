@@ -55,7 +55,12 @@ const UserImageForm = memo((props: any) => {
       <FormLabel>プロフィール画像</FormLabel>
       <FormControl>
         <input type="file" {...register("image")} />
-        <Button backgroundColor={"yellow"} type="submit">
+        <Button
+          my="4"
+          backgroundColor={"yellow"}
+          _hover={{ opacity: 0.8 }}
+          type="submit"
+        >
           更新
         </Button>
       </FormControl>

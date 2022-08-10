@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import React, { memo } from "react";
 import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
 import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
 
 import { usePost } from "../../hooks/post/usePost";
@@ -43,6 +44,8 @@ export const PostShow = memo((props: any) => {
   const { fetchPost } = usePost();
 
   const { createChatRoom } = useChatRoom();
+
+  const navigation = useNavigate();
 
   return (
     <Box mx="auto" pos="relative" mt="5%">
@@ -79,7 +82,7 @@ export const PostShow = memo((props: any) => {
               key={postedBrand.id}
               borderRadius="full"
               variant="solid"
-              colorScheme="orange"
+              colorScheme="gray"
               mr="2"
               mb="2"
             >
@@ -127,7 +130,12 @@ export const PostShow = memo((props: any) => {
               </ListItem>
             </List>
           </CommonModal>
-          <Button onClick={() => createChatRoom(post.user_id)}>
+          <Button
+            onClick={() => {
+              createChatRoom(post.user_id);
+              navigation("/messages");
+            }}
+          >
             メッセージを送る
           </Button>
         </Flex>

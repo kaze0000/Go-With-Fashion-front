@@ -9,7 +9,7 @@ import Mypage from "../components/pages/Mypage";
 import Posts from "../components/pages/Posts";
 import { SignUp } from "../components/pages/SignUp";
 import { useLoggedInUser } from "../hooks/useLoggedInUser";
-
+import { useMessage } from "../hooks/useMessage";
 // import { LoginUserProvider } from "../providers/LoginUserProvider";
 
 export const Router = memo(() => {

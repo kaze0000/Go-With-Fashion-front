@@ -80,17 +80,23 @@ const UserProfileForm = (props: any) => {
               defaultValue={userProfile.name}
               type="text"
               {...register("name")}
+              mb="4"
             />
           ) : (
             <Input
               placeholder="ユーザー名を入力してください。"
               type="text"
               {...register("name")}
+              mb="4"
             />
           )}
 
           <FormLabel>性別</FormLabel>
-          <Select {...register("gender")} defaultValue={userProfile.gender}>
+          <Select
+            {...register("gender")}
+            defaultValue={userProfile.gender}
+            mb="4"
+          >
             <option value="0">未選択</option>
             <option value="1">男性</option>
             <option value="2">女性</option>
@@ -102,9 +108,10 @@ const UserProfileForm = (props: any) => {
               defaultValue={userProfile.age}
               type="number"
               {...register("age")}
+              mb="4"
             />
           ) : (
-            <Input type="number" {...register("age")} />
+            <Input type="number" {...register("age")} mb="4" />
           )}
 
           <FormLabel>自己紹介</FormLabel>
@@ -113,12 +120,14 @@ const UserProfileForm = (props: any) => {
               defaultValue={userProfile.self_introducement}
               type="text"
               {...register("self_introducement")}
+              mb="4"
             />
           ) : (
             <Input
               placeholder="自己紹介文を入力してください。"
               type="text"
               {...register("self_introducement")}
+              mb="4"
             />
           )}
 
@@ -128,12 +137,14 @@ const UserProfileForm = (props: any) => {
               defaultValue={userProfile.twitter}
               type="text"
               {...register("twitter")}
+              mb="4"
             />
           ) : (
             <Input
               placeholder="TwitterのアカウントURLを入力してください。"
               type="text"
               {...register("twitter")}
+              mb="4"
             />
           )}
 
@@ -143,18 +154,34 @@ const UserProfileForm = (props: any) => {
               defaultValue={userProfile.instagram}
               type="text"
               {...register("instagram")}
+              mb="4"
             />
           ) : (
             <Input
               placeholder="InstagramのアカウントURLを入力してください。"
               type="text"
               {...register("instagram")}
+              mb="4"
             />
           )}
 
-          <FormLabel>好きなブランド</FormLabel>
-          <Input {...register("favorite_brands")} mb="4" />
-          <Button type="submit">更新</Button>
+          <Box>
+            <FormLabel>
+              好きなブランド
+              <br />
+              <Text fontSize={"xs"} fontWeight="bold">
+                ブランド名を半角スペースを開けて入力してください。
+              </Text>
+            </FormLabel>
+            <Input {...register("favorite_brands")} mb="4" />
+          </Box>
+          <Button
+            type="submit"
+            backgroundColor={"yellow"}
+            _hover={{ opacity: 0.8 }}
+          >
+            更新
+          </Button>
         </FormControl>
       </form>
     </Box>

@@ -20,6 +20,7 @@ export const ChatRoomCard = memo((props: any) => {
     // post,
     userProfile,
     userImage,
+    chatMessages,
     // postedBrands,
     // postedArea,
     // user,
@@ -50,7 +51,7 @@ export const ChatRoomCard = memo((props: any) => {
                   <Text>
                     {userProfile.name} ({userProfile.age}歳)
                   </Text>
-                  <Text>最新のメッセージをだす</Text>
+                  <Text>{chatMessages[0] ? chatMessages[0].message : ""}</Text>
                 </Box>
               </Box>
             </Flex>
