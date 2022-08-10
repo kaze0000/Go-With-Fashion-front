@@ -19,11 +19,8 @@ import { useParams } from "react-router-dom";
 import { useChatMessage } from "../../hooks/chatMessage/useChatMessage";
 import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
 
-import { usePost } from "../../hooks/post/usePost";
-import { Brand } from "../../type/api/Brand";
 import { ChatMessage } from "../../type/api/ChatMessage";
 import { ChatRoomForm } from "./ChatRoomForm";
-import { PostShow } from "./PostShow";
 
 export const ChatRoomShow = (props: any) => {
   const {

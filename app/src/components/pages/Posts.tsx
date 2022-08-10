@@ -16,14 +16,11 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 
 import { usePost } from "../../hooks/post/usePost";
 import { useLoggedInUser } from "../../hooks/useLoggedInUser";
-import { useLogin } from "../../hooks/useLogin";
 import { useMessage } from "../../hooks/useMessage";
-import { Brand } from "../../type/api/Brand";
-import Subject from "../atoms/Subject";
+
 import { PostCard } from "../organisms/PostCard";
 import PostForm from "../organisms/PostForm";
 import { PostShow } from "../organisms/PostShow";
@@ -44,6 +41,7 @@ const Posts = () => {
     postAndUserProfileHash,
     isLoading,
   } = usePost();
+
   const { fetchLoggedInUser, user } = useLoggedInUser();
 
   const onClickPostForm = () => {
@@ -70,6 +68,7 @@ const Posts = () => {
     fetchLoggedInUser();
   }, [isPost]);
 
+  console.log(postsAndUserProfilesHash);
   return (
     <HeaderLayout>
       <Flex>
@@ -132,6 +131,7 @@ const Posts = () => {
           </Button>
         </Box>
         {isPost && <PostForm setIsPost={setIsPost} />}
+
         {isPostShow && postAndUserProfileHash && (
           <PostShow
             userProfile={postAndUserProfileHash[0][0].user_profile}

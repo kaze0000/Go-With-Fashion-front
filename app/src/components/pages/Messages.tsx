@@ -16,20 +16,13 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { useChatMessage } from "../../hooks/chatMessage/useChatMessage";
 import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
-
 import { useLoggedInUser } from "../../hooks/useLoggedInUser";
-import { useLogin } from "../../hooks/useLogin";
 
-import { Brand } from "../../type/api/Brand";
-import Subject from "../atoms/Subject";
 import { ChatRoomCard } from "../organisms/ChatRoomCard";
 import { ChatRoomShow } from "../organisms/ChatRoomShow";
-import { PostCard } from "../organisms/PostCard";
-import PostForm from "../organisms/PostForm";
-import { PostShow } from "../organisms/PostShow";
 import { HeaderLayout } from "../templates/HeaderLayout";
 
 export const Messages = () => {
@@ -138,19 +131,6 @@ export const Messages = () => {
             othersProfile={chatMessage.others_profile}
           />
         )}
-        {/*
-        {isPost && <PostForm setIsPost={setIsPost} />}
-        {isPostShow && postAndUserProfileHash && (
-          <PostShow
-            userProfile={postAndUserProfileHash[0][0].user_profile}
-            post={postAndUserProfileHash[0][0].post}
-            userImage={postAndUserProfileHash[0][0].user_image}
-            postedBrands={postAndUserProfileHash[0][0].posted_brands}
-            postedArea={postAndUserProfileHash[0][0].posted_area}
-            user={user}
-            setIsPostShow={setIsPostShow}
-          />
-        )} */}
       </Flex>
     </HeaderLayout>
   );

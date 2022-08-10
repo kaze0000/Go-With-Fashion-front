@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
 
 import { usePost } from "../../hooks/post/usePost";
+import { useMessage } from "../../hooks/useMessage";
 import { Brand } from "../../type/api/Brand";
 import { UserProfileList } from "../atoms/posts/UserProfileList";
 import { CommonModal } from "../molecules/CommonModal";
@@ -35,13 +36,10 @@ export const PostShow = memo((props: any) => {
     postedBrands,
     postedArea,
     user,
-    isPostShow,
     setIsPostShow,
   } = props;
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  const { fetchPost } = usePost();
+  const { showMessage } = useMessage();
 
   const { createChatRoom } = useChatRoom();
 
@@ -92,7 +90,7 @@ export const PostShow = memo((props: any) => {
         </Flex>
         <Text>{post.body}</Text>
       </Stack>
-      {user.id != post.user_id && (
+      {(!user || user.id != post.user_id) && (
         <Flex justifyContent="space-between">
           <CommonModal buttonName="プロフィール">
             <Box maxW="300px" mx="auto">
@@ -132,6 +130,13 @@ export const PostShow = memo((props: any) => {
           </CommonModal>
           <Button
             onClick={() => {
+              if (!user) {
+                showMessage({
+                  title: "ログインしてください。",
+                  status: "info",
+                });
+                return;
+              }
               createChatRoom(post.user_id);
               navigation("/messages");
             }}

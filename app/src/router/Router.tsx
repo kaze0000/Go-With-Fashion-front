@@ -21,6 +21,7 @@ export const Router = memo(() => {
   return (
     // <LoginUserProvider>
     <Routes>
+      <Route path="/" element={<Mypage />} />
       <Route path="/sign_up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/mypage" element={<Mypage />} />
