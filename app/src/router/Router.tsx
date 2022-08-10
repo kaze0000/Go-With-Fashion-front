@@ -23,17 +23,11 @@ export const Router = memo(() => {
     <Routes>
       <Route path="/sign_up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-      {user ? (
-        <>
-          <Route path="/mypage" element={<Mypage />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/messages" element={<Messages />}>
-            <Route path=":id" element={<ChatRoomShow />} />
-          </Route>
-        </>
-      ) : (
-        <Route path="*" element={<Login />} />
-      )}
+      <Route path="/mypage" element={<Mypage />} />
+      <Route path="/posts" element={<Posts />} />
+      <Route path="/messages" element={<Messages />}>
+        <Route path=":id" element={<ChatRoomShow />} />
+      </Route>
     </Routes>
     // </LoginUserProvider>
   );

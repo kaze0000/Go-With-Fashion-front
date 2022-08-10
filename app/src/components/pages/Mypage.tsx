@@ -6,6 +6,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Icon,
   Image,
   List,
   ListIcon,
@@ -116,45 +117,30 @@ const Mypage = () => {
                 自己紹介
               </Text>
               <Box as="span" overflow={"auto"} maxH="200px" height={"100%"}>
-                <Textarea
-                  minH={"200px"}
-                  value={
-                    userProfile ? userProfile.self_introducement : "未入力"
-                  }
-                />
+                {userProfile && userProfile.self_introducement
+                  ? userProfile.self_introducement
+                  : "未入力"}
               </Box>
               <Box my="2%" textAlign={"right"}>
                 {userProfile && userProfile.twitter ? (
                   <Link target={"_blank"} to={userProfile.twitter}>
-                    <Box
-                      backgroundColor="#242424"
-                      display="inline-block"
-                      borderRadius="full"
-                      padding="2%"
-                      ml="2"
-                    >
-                      <ImTwitter color="white" fontSize={"1.5rem"} />
+                    <Box display="inline-block" ml="2">
+                      <ImTwitter fontSize={"1.5rem"} />
                     </Box>
                   </Link>
                 ) : (
-                  <Box display="inline-block" ml="2">
+                  <Box display="inline-block" ml="2" opacity={"0.1"}>
                     <ImTwitter fontSize={"1.5rem"} />
                   </Box>
                 )}
                 {userProfile && userProfile.instagram ? (
                   <Link target={"_blank"} to={userProfile.instagram}>
-                    <Box
-                      backgroundColor="#242424"
-                      display="inline-block"
-                      borderRadius="full"
-                      padding="2%"
-                      ml="2"
-                    >
+                    <Box display="inline-block" ml="2">
                       <BsInstagram color="white" fontSize={"1.5rem"} />
                     </Box>
                   </Link>
                 ) : (
-                  <Box display="inline-block" ml="2">
+                  <Box display="inline-block" ml="2" opacity={"0.1"}>
                     <BsInstagram fontSize={"1.5rem"} />
                   </Box>
                 )}
@@ -162,22 +148,46 @@ const Mypage = () => {
             </Box>
             <List spacing={4} my="4">
               <ListItem>
-                <ListIcon color="teal.500" />
-                名前: {userProfile ? userProfile.name : "未入力"}
+                <Icon viewBox="0 0 200 200" color="red.500" pr="2">
+                  <path
+                    fill="currentColor"
+                    d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+                  />
+                </Icon>
+                名前:{" "}
+                {userProfile && userProfile.name ? userProfile.name : "未入力"}
               </ListItem>
               <ListItem>
-                <ListIcon color="green.500" />
-                年齢: {userProfile ? userProfile.age : 0}歳
+                <Icon viewBox="0 0 200 200" color="red.500" pr="2">
+                  <path
+                    fill="currentColor"
+                    d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+                  />
+                </Icon>
+                年齢:{" "}
+                {userProfile && userProfile.age
+                  ? `${userProfile.age}歳`
+                  : "未入力"}
               </ListItem>
               <ListItem>
-                <ListIcon color="green.500" />
-                性別: {userProfile ? genderList[userProfile.gender] : "未入力"}
+                <Icon viewBox="0 0 200 200" color="red.500" pr="2">
+                  <path
+                    fill="currentColor"
+                    d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+                  />
+                </Icon>
+                性別: {userProfile && genderList[userProfile.gender]}
               </ListItem>
               <ListItem>
-                <ListIcon color="green.500" />
+                <Icon viewBox="0 0 200 200" color="red.500" pr="2">
+                  <path
+                    fill="currentColor"
+                    d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+                  />
+                </Icon>
                 好きなブランド:
                 <br />
-                {brands
+                {brands && brands.length !== 0
                   ? brands.map((brand) => (
                       <Tag
                         size="sm"

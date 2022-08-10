@@ -1,6 +1,7 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useLogin } from "../../hooks/useLogin";
 
 const Login = () => {
@@ -19,7 +20,14 @@ const Login = () => {
         <FormLabel>パスワード</FormLabel>
         <Input {...register("password")} />
       </FormControl>
-      <button type="submit">ログイン</button>
+      <Link to="/sign_up">新規登録はこちら</Link>
+      <Button
+        type="submit"
+        backgroundColor={"yellow"}
+        _hover={{ opacity: 0.8 }}
+      >
+        ログイン
+      </Button>
     </form>
   );
 };

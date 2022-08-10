@@ -94,7 +94,7 @@ const UserProfileForm = (props: any) => {
           <FormLabel>性別</FormLabel>
           <Select
             {...register("gender")}
-            defaultValue={userProfile.gender}
+            defaultValue={userProfile ? userProfile.gender : 0}
             mb="4"
           >
             <option value="0">未選択</option>

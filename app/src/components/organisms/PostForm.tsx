@@ -120,20 +120,32 @@ const PostForm = (props: any) => {
           onClick={() => setIsPost(false)}
         />
         <FormLabel>日程</FormLabel>
-        <Input type="date" {...register("preferred_at")} />
+        <Input type="date" {...register("preferred_at")} mb="4" />
         <FormLabel>希望エリア</FormLabel>
-        <Select {...register("area_id")}>
+        <Select {...register("area_id")} mb="4">
           {prefectures.map((prefecture) => (
             <option key={prefecture.code} value={prefecture.code}>
               {prefecture.name}
             </option>
           ))}
         </Select>
-        <FormLabel>見に行きたいブランド</FormLabel>
-        <Input type="text" {...register("posted_brands")} />
+        <FormLabel>
+          行きたいブランド
+          <br />
+          <Text fontSize={"xs"} fontWeight="bold">
+            ブランド名を半角スペースを開けて入力してください。
+          </Text>
+        </FormLabel>
+        <Input type="text" {...register("posted_brands")} mb="4" />
         <FormLabel>詳細</FormLabel>
         <Input mb="6" type="text" {...register("body")} />
-        <Button type="submit">送信</Button>
+        <Button
+          type="submit"
+          backgroundColor={"yellow"}
+          _hover={{ opacity: 0.8 }}
+        >
+          送信
+        </Button>
       </FormControl>
     </form>
   );

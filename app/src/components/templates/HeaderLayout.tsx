@@ -10,8 +10,6 @@ type Props = {
 export const HeaderLayout = memo((props: Props) => {
   const { children } = props;
 
-  const { logout } = useLogout();
-
   return (
     <Box maxW="1280px" mx="auto">
       <Grid
@@ -25,7 +23,6 @@ export const HeaderLayout = memo((props: Props) => {
       >
         <GridItem pl="2" bg="orange.300" area={"header"}>
           Header
-          <Button onClick={() => logout()}>ログアウト</Button>
         </GridItem>
         <GridItem bg="white.300" area={"nav"}>
           <MenuList />
