@@ -2,6 +2,8 @@ import React, { memo, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
+  Box,
+  Button,
   FormControl,
   FormLabel,
   Input,
@@ -16,6 +18,8 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRegistration } from "../../hooks/useRegistration";
+import { HeaderOnlyLayout } from "../templates/HeaderOnlyLayout";
+import { Link } from "react-router-dom";
 
 export const SignUp = memo(() => {
   const { register, handleSubmit } = useForm();
@@ -25,18 +29,29 @@ export const SignUp = memo(() => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl>
-          <FormLabel>メールアドレス</FormLabel>
-          <Input {...register("email")} />
-          <FormLabel>パスワード</FormLabel>
-          <Input {...register("password")} />
-          <FormLabel>パスワード確認</FormLabel>
-          <Input {...register("passwordConfirmation")} />
-        </FormControl>
-        <button type="submit">登録</button>
-      </form>
-    </>
+    <HeaderOnlyLayout>
+      <Box maxW={"600px"} mx="auto" mt="10">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormControl>
+            <FormLabel>メールアドレス</FormLabel>
+            <Input {...register("email")} mb="2" />
+            <FormLabel>パスワード</FormLabel>
+            <Input {...register("password")} mb="2" />
+            <FormLabel>パスワード確認</FormLabel>
+            <Input {...register("passwordConfirmation")} mb="2" />
+          </FormControl>
+          <Box textAlign={"right"} my="4">
+            <Link to="/login">ログインはこちら</Link>
+          </Box>
+          <Button
+            type="submit"
+            backgroundColor={"yellow"}
+            _hover={{ opacity: 0.8 }}
+          >
+            登録
+          </Button>
+        </form>
+      </Box>
+    </HeaderOnlyLayout>
   );
 });

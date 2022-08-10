@@ -64,18 +64,20 @@ export const PostCard = memo((props: any) => {
                     </DeleteIcon>
                   )}
                   <Text>{userProfile.name}</Text>
-                  {postedBrands.map((postedBrand: Brand) => (
-                    <Tag
-                      size="sm"
-                      key={postedBrand.id}
-                      borderRadius="full"
-                      variant="solid"
-                      colorScheme="gray"
-                      mr="2"
-                    >
-                      <TagLabel>{postedBrand.name}</TagLabel>
-                    </Tag>
-                  ))}
+                  <Box my="2">
+                    {postedBrands.map((postedBrand: Brand) => (
+                      <Tag
+                        size="sm"
+                        key={postedBrand.id}
+                        borderRadius="full"
+                        variant="solid"
+                        colorScheme="gray"
+                        mr="2"
+                      >
+                        <TagLabel>{postedBrand.name}</TagLabel>
+                      </Tag>
+                    ))}
+                  </Box>
                   <Text>
                     {post.body
                       ? post.body.substr(0, 10) + "..."

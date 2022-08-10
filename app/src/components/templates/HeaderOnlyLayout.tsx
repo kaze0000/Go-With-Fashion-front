@@ -7,14 +7,14 @@ type Props = {
   children: ReactNode;
 };
 
-export const HeaderLayout = memo((props: Props) => {
+export const HeaderOnlyLayout = memo((props: Props) => {
   const { children } = props;
 
   return (
     <Box>
       <Grid
         templateAreas={`"header header"
-                  "nav main"`}
+                  "main main"`}
         gridTemplateRows={"50px 1fr 30px"}
         gridTemplateColumns={"300px 1fr"}
         h="200px"
@@ -33,9 +33,6 @@ export const HeaderLayout = memo((props: Props) => {
             top={"50%"}
             transform="translate(-5%, -50%)"
           />
-        </GridItem>
-        <GridItem bg="white.300" area={"nav"}>
-          <MenuList />
         </GridItem>
         <GridItem pl="2" mb="10" bg="white.300" area={"main"}>
           {children}
