@@ -68,7 +68,7 @@ const UserImageForm = memo((props: any) => {
           _hover={{ opacity: 0.8 }}
           type="submit"
         >
-          更新
+          プロフィール画像を更新
         </Button>
       </FormControl>
     </form>

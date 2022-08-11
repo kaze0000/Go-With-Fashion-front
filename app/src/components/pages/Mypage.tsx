@@ -205,15 +205,13 @@ const Mypage = () => {
                   : "未入力"}
               </ListItem>
             </List>
-            <Box textAlign={"center"}>
-              <Button
-                backgroundColor={"yellow"}
-                _hover={{ opacity: 0.8 }}
-                onClick={onClickUserProfileForm}
-              >
-                プロフィールを入力 / 編集
-              </Button>
-            </Box>
+            <Button
+              backgroundColor={"yellow"}
+              _hover={{ opacity: 0.8 }}
+              onClick={onClickUserProfileForm}
+            >
+              プロフィールを入力 / 編集
+            </Button>
           </Box>
         </Box>
         {isEdit && (
