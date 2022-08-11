@@ -79,10 +79,12 @@ const Posts = () => {
           w="100%"
           textAlign={"center"}
         >
-          <Heading as="h2" my="4" textAlign="center">
-            <Search2Icon w="7" mr="4" />
-            掲示板
-          </Heading>
+          <Flex alignItems={"center"} justifyContent="center">
+            <Search2Icon mr="2" fontSize={"2rem"} />
+            <Heading as="h2" my="4" textAlign="center">
+              掲示板
+            </Heading>
+          </Flex>
           <Divider mb="6" />
           <Box overflow={"auto"} h="100vh">
             {isLoading ? (

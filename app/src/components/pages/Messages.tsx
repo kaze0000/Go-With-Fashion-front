@@ -81,12 +81,12 @@ export const Messages = () => {
     <HeaderLayout>
       <Flex>
         <Box borderRight="1px solid #EDF2F7" maxW="420px" w="100%">
-          <Heading as="h2" my="4" textAlign="center">
-            <Box display={"inline-block"} fontSize="2rem">
-              <FaTelegramPlane />
-            </Box>
-            メッセージ
-          </Heading>
+          <Flex alignItems={"center"} justifyContent="center">
+            <FaTelegramPlane fontSize="2rem" />
+            <Heading as="h2" my="4" textAlign="center">
+              メッセージ
+            </Heading>
+          </Flex>
           <Divider mb="6" />
           <Box overflow={"auto"} h="100vh">
             {isLoading && user ? (

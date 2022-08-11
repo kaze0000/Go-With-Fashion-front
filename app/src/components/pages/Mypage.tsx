@@ -85,21 +85,12 @@ const Mypage = () => {
     <HeaderLayout>
       <Flex>
         <Box borderRight="1px solid #EDF2F7" px="2%" maxW="420px" w="100%">
-          <Heading
-            as="h2"
-            my="4"
-            display={"flex"}
-            alignItems="center"
-            justifyContent={"center"}
-          >
-            <ImProfile
-              size={"2.2rem"}
-              style={{
-                display: "inline-block",
-              }}
-            />
-            プロフィール
-          </Heading>
+          <Flex alignItems={"center"} justifyContent="center">
+            <ImProfile fontSize={"2rem"} />
+            <Heading as="h2" my="4">
+              マイページ
+            </Heading>
+          </Flex>
           <Divider mb="6" />
           <Box overflow={"auto"} px="2%">
             <Box maxW={"390px"} w="100%">
