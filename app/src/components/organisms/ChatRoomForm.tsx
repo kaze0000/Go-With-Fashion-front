@@ -3,10 +3,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useChatMessage } from "../../hooks/chatMessage/useChatMessage";
-import { ChatMessage } from "../../type/api/ChatMessage";
 
 export const ChatRoomForm = (props: any) => {
-  const { chatRoom, chatMessages } = props;
+  const { chatRoom, chatMessages, setIsSubmit, isSumit } = props;
 
   const { register, handleSubmit } = useForm();
 
@@ -31,13 +30,15 @@ export const ChatRoomForm = (props: any) => {
         )
         .then((res) => {
           console.log(res.data);
-          // chatMessages.push(res.data);
+          setTimeout(() => {
+            chatMessages.unshift(res.data);
+            fetchChatMessage(chatRoom.id);
+            setIsSubmit(!isSumit);
+          }, 500);
         })
         .catch((err) => console.log(err));
     };
     sendFormData();
-
-    fetchChatMessage(chatRoom.id);
 
     console.log(chatMessages);
   };

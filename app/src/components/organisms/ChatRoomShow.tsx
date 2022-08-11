@@ -34,7 +34,7 @@ export const ChatRoomShow = (props: any) => {
   console.log(chatMessages);
   console.log(myProfile.user_id);
 
-  // const [isSumit, setIsSubmit] = useState(false);
+  const [isSumit, setIsSubmit] = useState(false);
 
   return (
     <Box mt="5%" mx="5%" width="100%">
@@ -106,10 +106,13 @@ export const ChatRoomShow = (props: any) => {
             );
           }
         })}
-        {/* <Box position={"fixed"} bottom="0" maxW={"390px"} w="100%" left={"50%"}> */}
-        {/* </Box> */}
       </Box>
-      <ChatRoomForm chatRoom={chatRoom} />
+      <ChatRoomForm
+        chatRoom={chatRoom}
+        chatMessages={chatMessages}
+        isSumit={isSumit}
+        setIsSubmit={setIsSubmit}
+      />
     </Box>
   );
 };
