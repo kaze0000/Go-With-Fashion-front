@@ -4,11 +4,8 @@ import {
   Button,
   Divider,
   Flex,
-  Icon,
-  createIcon,
   Image,
   List,
-  ListIcon,
   ListItem,
   Stack,
   Tag,
@@ -16,14 +13,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { memo } from "react";
-import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
 
-import { usePost } from "../../hooks/post/usePost";
-import { useMessage } from "../../hooks/useMessage";
 import { Brand } from "../../type/api/Brand";
+
+import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
+import { useMessage } from "../../hooks/useMessage";
+
 import { UserProfileList } from "../atoms/posts/UserProfileList";
+
 import { CommonModal } from "../molecules/CommonModal";
 
 const genderList = ["未入力", "男性", "女性"];

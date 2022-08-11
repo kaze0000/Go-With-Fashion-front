@@ -21,6 +21,7 @@ import {
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+
 import { Post } from "../../type/api/Post";
 
 const PostForm = (props: any) => {

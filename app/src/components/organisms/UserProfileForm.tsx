@@ -1,17 +1,9 @@
 import {
   Box,
   Button,
-  Divider,
-  Flex,
   FormControl,
   FormLabel,
-  Heading,
-  Image,
   Input,
-  InputLeftAddon,
-  List,
-  ListIcon,
-  ListItem,
   Select,
   Stack,
   Text,
@@ -19,11 +11,10 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 import { UserProfile } from "../../type/api/UserProfile";
-import Subject from "../atoms/Subject";
 
 const UserProfileForm = (props: any) => {
   const { userProfile, setIsEdit } = props;
@@ -44,6 +35,7 @@ const UserProfileForm = (props: any) => {
       instagram,
       favorite_brands,
     } = data;
+
     const sendFormData = () => {
       axios
         .post(

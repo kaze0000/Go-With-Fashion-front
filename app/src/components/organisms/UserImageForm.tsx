@@ -1,24 +1,8 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Image,
-  Input,
-  List,
-  ListIcon,
-  ListItem,
-  Stack,
-  Text,
-  Textarea,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Button, FormControl, FormLabel } from "@chakra-ui/react";
 import axios from "axios";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { useForm } from "react-hook-form";
+
 import { useMessage } from "../../hooks/useMessage";
 import { UserImage } from "../../type/api/UserImage";
 

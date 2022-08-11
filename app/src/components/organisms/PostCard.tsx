@@ -1,16 +1,7 @@
 import { AtSignIcon, DeleteIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Stack,
-  Tag,
-  TagLabel,
-  Text,
-} from "@chakra-ui/react";
-
+import { Box, Flex, Image, Tag, TagLabel, Text } from "@chakra-ui/react";
 import React, { memo } from "react";
+
 import { Brand } from "../../type/api/Brand";
 
 export const PostCard = memo((props: any) => {

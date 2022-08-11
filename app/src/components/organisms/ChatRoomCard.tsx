@@ -9,25 +9,10 @@ import {
   TagLabel,
   Text,
 } from "@chakra-ui/react";
-
 import React, { memo } from "react";
-import { usePost } from "../../hooks/post/usePost";
-import { Brand } from "../../type/api/Brand";
-import { PostShow } from "./PostShow";
 
 export const ChatRoomCard = memo((props: any) => {
-  const {
-    // post,
-    userProfile,
-    userImage,
-    chatMessages,
-    // postedBrands,
-    // postedArea,
-    // user,
-    // onClickDeletePost,
-    // isPostShow,
-    setIsChatRoomShow,
-  } = props;
+  const { userProfile, userImage, chatMessages, setIsChatRoomShow } = props;
 
   return (
     <>

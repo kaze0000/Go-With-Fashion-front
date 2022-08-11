@@ -1,25 +1,8 @@
-import { AtSignIcon, DeleteIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  FormControl,
-  Image,
-  Input,
-  Stack,
-  Tag,
-  TagLabel,
-  Text,
-  Textarea,
-} from "@chakra-ui/react";
-
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import React, { memo, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useChatMessage } from "../../hooks/chatMessage/useChatMessage";
-import { useChatRoom } from "../../hooks/chatRoom/useChatRoom";
 
 import { ChatMessage } from "../../type/api/ChatMessage";
+
 import { ChatRoomForm } from "./ChatRoomForm";
 
 export const ChatRoomShow = (props: any) => {
