@@ -28,7 +28,11 @@ import Subject from "../atoms/Subject";
 const UserProfileForm = (props: any) => {
   const { userProfile, setIsEdit } = props;
 
-  const { register, handleSubmit } = useForm<UserProfile>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserProfile>();
 
   const onSubmit = (data: UserProfile) => {
     const {
@@ -74,99 +78,125 @@ const UserProfileForm = (props: any) => {
     <Box mx="auto" mt="5%">
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl>
-          <FormLabel>名前</FormLabel>
-          {userProfile ? (
-            <Input
-              defaultValue={userProfile.name}
-              type="text"
-              {...register("name")}
-              mb="4"
-            />
-          ) : (
-            <Input
-              placeholder="ユーザー名を入力してください。"
-              type="text"
-              {...register("name")}
-              mb="4"
-            />
-          )}
+          <Box>
+            <FormLabel>名前</FormLabel>
+            {userProfile ? (
+              <Input
+                defaultValue={userProfile.name}
+                type="text"
+                {...register("name")}
+                mb="4"
+              />
+            ) : (
+              <Input
+                placeholder="ユーザー名を入力してください。"
+                type="text"
+                {...register("name")}
+                mb="4"
+              />
+            )}
+          </Box>
 
-          <FormLabel>性別</FormLabel>
-          <Select
-            {...register("gender")}
-            defaultValue={userProfile ? userProfile.gender : 0}
-            mb="4"
-          >
-            <option value="0">未選択</option>
-            <option value="1">男性</option>
-            <option value="2">女性</option>
-          </Select>
+          <Box>
+            <FormLabel>性別</FormLabel>
+            <Select
+              {...register("gender")}
+              defaultValue={userProfile ? userProfile.gender : 0}
+              mb="4"
+            >
+              <option value="0">未選択</option>
+              <option value="1">男性</option>
+              <option value="2">女性</option>
+            </Select>
+          </Box>
 
-          <FormLabel>年齢</FormLabel>
-          {userProfile ? (
-            <Input
-              defaultValue={userProfile.age}
-              type="number"
-              {...register("age")}
-              mb="4"
-            />
-          ) : (
-            <Input type="number" {...register("age")} mb="4" />
-          )}
+          <Box>
+            <FormLabel>年齢</FormLabel>
+            {userProfile ? (
+              <Input
+                defaultValue={userProfile.age}
+                type="number"
+                {...register("age")}
+                mb="4"
+              />
+            ) : (
+              <Input type="number" {...register("age")} mb="4" />
+            )}
+          </Box>
 
-          <FormLabel>自己紹介</FormLabel>
-          {userProfile ? (
-            <Input
-              defaultValue={userProfile.self_introducement}
-              type="text"
-              {...register("self_introducement")}
-              mb="4"
-            />
-          ) : (
-            <Input
-              placeholder="自己紹介文を入力してください。"
-              type="text"
-              {...register("self_introducement")}
-              mb="4"
-            />
-          )}
+          <Box>
+            <FormLabel>自己紹介</FormLabel>
+            {userProfile ? (
+              <Textarea
+                defaultValue={userProfile.self_introducement}
+                {...register("self_introducement")}
+                mb="4"
+              />
+            ) : (
+              <Textarea
+                placeholder="自己紹介文を入力してください。"
+                {...register("self_introducement")}
+                mb="4"
+              />
+            )}
+          </Box>
 
-          <FormLabel>twitter URL</FormLabel>
-          {userProfile ? (
-            <Input
-              defaultValue={userProfile.twitter}
-              type="text"
-              {...register("twitter")}
-              mb="4"
-            />
-          ) : (
-            <Input
-              placeholder="TwitterのアカウントURLを入力してください。"
-              type="text"
-              {...register("twitter")}
-              mb="4"
-            />
-          )}
+          <Box>
+            <FormLabel>twitter URL</FormLabel>
+            {userProfile ? (
+              <Input
+                defaultValue={userProfile.twitter}
+                type="text"
+                {...register("twitter", {
+                  pattern: /https?:\/\/[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+/,
+                })}
+              />
+            ) : (
+              <Input
+                placeholder="TwitterのアカウントURLを入力してください。"
+                type="text"
+                {...register("twitter", {
+                  pattern: /https?:\/\/[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+/,
+                })}
+              />
+            )}
+          </Box>
 
-          <FormLabel>Instagram URL</FormLabel>
-          {userProfile ? (
-            <Input
-              defaultValue={userProfile.instagram}
-              type="text"
-              {...register("instagram")}
-              mb="4"
-            />
-          ) : (
-            <Input
-              placeholder="InstagramのアカウントURLを入力してください。"
-              type="text"
-              {...register("instagram")}
-              mb="4"
-            />
+          {errors.twitter && errors.twitter.type === "pattern" && (
+            <span style={{ color: "red", fontSize: ".8rem" }}>
+              URLの形で入力してください。
+            </span>
           )}
 
           <Box>
-            <FormLabel>
+            <FormLabel mt="4">Instagram URL</FormLabel>
+            {userProfile ? (
+              <Input
+                defaultValue={userProfile.instagram}
+                type="text"
+                {...register("instagram", {
+                  pattern: /https?:\/\/[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+/,
+                })}
+              />
+            ) : (
+              <Input
+                placeholder="InstagramのアカウントURLを入力してください。"
+                type="text"
+                {...register("instagram", {
+                  pattern: /https?:\/\/[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+/,
+                })}
+              />
+            )}
+          </Box>
+
+          {errors.instagram && errors.instagram.type === "pattern" && (
+            <span style={{ color: "red", fontSize: ".8rem" }}>
+              URLの形で入力してください。
+            </span>
+          )}
+
+          <Box>
+            <FormLabel mt="4">
               好きなブランド
               <br />
               <Text fontSize={"xs"} fontWeight="bold">
