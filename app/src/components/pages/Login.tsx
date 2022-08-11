@@ -26,9 +26,9 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <FormLabel>メールアドレス</FormLabel>
-            <Input {...register("email")} mb="2" />
+            <Input {...register("email")} mb="2" type={"email"} />
             <FormLabel>パスワード</FormLabel>
-            <Input {...register("password")} />
+            <Input {...register("password")} type={"password"} />
           </FormControl>
           <Box textAlign={"right"} my="4">
             <Link to="/sign_up">新規登録はこちら</Link>

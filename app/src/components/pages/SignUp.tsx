@@ -34,11 +34,15 @@ export const SignUp = memo(() => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <FormLabel>メールアドレス</FormLabel>
-            <Input {...register("email")} mb="2" />
+            <Input {...register("email")} mb="2" type={"email"} />
             <FormLabel>パスワード</FormLabel>
-            <Input {...register("password")} mb="2" />
+            <Input {...register("password")} mb="2" type={"password"} />
             <FormLabel>パスワード確認</FormLabel>
-            <Input {...register("passwordConfirmation")} mb="2" />
+            <Input
+              {...register("passwordConfirmation")}
+              mb="2"
+              type={"password"}
+            />
           </FormControl>
           <Box textAlign={"right"} my="4">
             <Link to="/login">ログインはこちら</Link>
