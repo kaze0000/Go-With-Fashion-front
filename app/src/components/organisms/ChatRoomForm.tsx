@@ -47,7 +47,11 @@ export const ChatRoomForm = (props: any) => {
     <Box mt="4">
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl>
-          <Textarea minH={"60px"} {...register("message")} />
+          <Textarea
+            minH={"60px"}
+            {...register("message")}
+            placeholder="メッセージを入力してください。"
+          />
           <Button
             type="submit"
             display="block"

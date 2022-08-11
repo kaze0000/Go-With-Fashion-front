@@ -38,7 +38,7 @@ export const ChatRoomShow = (props: any) => {
 
   return (
     <Box mt="5%" mx="5%" width="100%">
-      <Box mx="auto" h="70vh" overflow={"scroll"}>
+      <Box mx="auto" h="60vh" overflow={"scroll"}>
         {chatMessages.map((chatMessage: ChatMessage) => {
           if (chatMessage.user_id === myProfile.user_id) {
             return (
