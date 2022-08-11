@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Image,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -16,7 +9,6 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const { login } = useLogin();
   const onSubmit = (data: any) => {
-    // console.log(data);
     login(data);
   };
 

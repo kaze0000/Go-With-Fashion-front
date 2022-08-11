@@ -1,20 +1,5 @@
-import { AtSignIcon, Search2Icon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Image,
-  Stack,
-  Text,
-  TagLabel,
-  Tag,
-  Spinner,
-} from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
+import { Box, Button, Divider, Flex, Heading, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 import { usePost } from "../../hooks/post/usePost";

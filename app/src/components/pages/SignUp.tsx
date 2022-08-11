@@ -1,22 +1,7 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { useForm } from "react-hook-form";
 
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Stack,
-} from "@chakra-ui/react";
-import axios from "axios";
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useRegistration } from "../../hooks/useRegistration";
 import { HeaderOnlyLayout } from "../templates/HeaderOnlyLayout";
 import { Link } from "react-router-dom";

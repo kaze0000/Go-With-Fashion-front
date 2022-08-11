@@ -1,15 +1,13 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 import { useRegistration } from "../../hooks/useRegistration";
 
 const Home = () => {
   const { register, handleSubmit } = useForm();
-  const { registerUser } = useRegistration();
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    // console.log(data);
   };
   return (
     <>

@@ -3,25 +3,20 @@ import {
   Button,
   Divider,
   Flex,
-  Grid,
-  GridItem,
   Heading,
   Icon,
   Image,
   List,
-  ListIcon,
   ListItem,
   Spinner,
-  Stack,
   Tag,
   TagCloseButton,
   TagLabel,
   Text,
-  Textarea,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import internal from "stream";
+import { Link } from "react-router-dom";
 import { ImProfile, ImTwitter } from "react-icons/im";
 import { BsInstagram } from "react-icons/bs";
 
@@ -29,12 +24,10 @@ import { useBrand } from "../../hooks/brand/useBrand";
 import { useLoggedInUser } from "../../hooks/useLoggedInUser";
 import { useUserImage } from "../../hooks/useUserImage";
 import { useUserProfile } from "../../hooks/useUserProfile";
-import Subject from "../atoms/Subject";
-import { MenuList } from "../organisms/MenuList";
+
 import UserImageForm from "../organisms/UserImageForm";
 import UserProfileForm from "../organisms/UserProfileForm";
 import { HeaderLayout } from "../templates/HeaderLayout";
-import { Link } from "react-router-dom";
 import { useMessage } from "../../hooks/useMessage";
 
 const Mypage = () => {

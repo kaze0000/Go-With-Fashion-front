@@ -1,20 +1,5 @@
 import { FaTelegramPlane } from "react-icons/fa";
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Image,
-  Stack,
-  Text,
-  TagLabel,
-  Tag,
-  Spinner,
-} from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 import { useChatMessage } from "../../hooks/chatMessage/useChatMessage";
@@ -29,15 +14,9 @@ export const Messages = () => {
   const { fetchLoggedInUser, user } = useLoggedInUser();
 
   const [isChatRoomShow, setIsChatRoomShow] = useState(false);
-  // const {
-  //   fetchPosts,
-  //   numberOfElementsArray,
-  //   // fetchPosts,
-  //   // deletePost,
-  //   // fetchPost,
-  //   // postAndUserProfileHash,
-  //   isLoading,
-  // } = useMessage();
+
+  const { fetchChatMessage, chatMessage } = useChatMessage();
+
   const {
     fetchChatRooms,
     fetchChatRoom,
@@ -47,31 +26,6 @@ export const Messages = () => {
     isLoading,
   } = useChatRoom();
 
-  const { fetchChatMessage, chatMessage } = useChatMessage();
-
-  // const { user, fetchLoggedInUser } = useLoggedInUser();
-
-  // const onClickPostForm = () => {
-  //   setIsPost(!isPost);
-  // };
-
-  // const onClickDeletePost = (post_id: any) => {
-  //   console.log(post_id);
-  //   deletePost(post_id);
-  //   setTimeout(() => {
-  //     fetchPosts();
-  //   }, 100);
-  // };
-
-  // useEffect(() => {
-  //   fetchChatRooms();
-  // }, []);
-  // []にisMessageいれないとだめかも
-
-  // useEffect(() => {
-  //   fetchLoggedInUser();
-  // }, [isPost]);
-  console.log(chatMessage);
   useEffect(() => {
     fetchLoggedInUser();
     fetchChatRooms();
