@@ -35,7 +35,7 @@ export const ChatRoomShow = (props: any) => {
                         src={
                           myImage
                             ? myImage.image.url
-                            : "http://localhost:3000/fallback/default.png"
+                            : `${process.env.REACT_APP_SERVER_URL}/fallback/default.png`
                         }
                       />
                     </Box>
@@ -67,7 +67,7 @@ export const ChatRoomShow = (props: any) => {
                       src={
                         othersImage
                           ? othersImage.image.url
-                          : "http://localhost:3000/fallback/default.png"
+                          : `${process.env.REACT_APP_SERVER_URL}/fallback/default.png`
                       }
                     />
                   </Box>

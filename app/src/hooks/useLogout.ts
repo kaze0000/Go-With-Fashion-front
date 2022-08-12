@@ -12,7 +12,7 @@ export const useLogout = () => {
   const logout = useCallback(() => {
     axios
       .delete(
-        "http://localhost:3000/api/v1/logout",
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/logout`,
         // axiosでバックエンドのAPI(Rails)と通信する際にデータにcookieを含めるかどうかを決める
         { withCredentials: true }
       )

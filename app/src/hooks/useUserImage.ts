@@ -10,7 +10,7 @@ export const useUserImage = () => {
 
   const fetchUserImage = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/user_images/new", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/user_images/new`, {
         withCredentials: true,
       })
       .then((res) => {

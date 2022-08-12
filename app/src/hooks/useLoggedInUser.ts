@@ -10,7 +10,7 @@ export const useLoggedInUser = () => {
   // const navigation = useNavigate();
   const fetchLoggedInUser = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/logged_in", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/logged_in`, {
         withCredentials: true,
       })
       .then((res) => {

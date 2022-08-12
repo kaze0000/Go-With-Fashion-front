@@ -27,7 +27,7 @@ export const ChatRoomCard = memo((props: any) => {
                   src={
                     userImage
                       ? userImage.image.url
-                      : "http://localhost:3000/fallback/default.png"
+                      : `${process.env.REACT_APP_SERVER_URL}/fallback/default.png`
                   }
                 />
               </Box>

@@ -18,7 +18,7 @@ export const ChatRoomForm = (props: any) => {
     const sendFormData = () => {
       axios
         .post(
-          "http://localhost:3000/api/v1/chat_messages",
+          `${process.env.REACT_APP_SERVER_URL}/api/v1/chat_messages`,
           {
             chat_message: {
               chat_room_id: chatRoom.id,

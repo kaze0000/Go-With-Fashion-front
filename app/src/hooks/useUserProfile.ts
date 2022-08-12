@@ -10,7 +10,7 @@ export const useUserProfile = () => {
 
   const fetchAllUserProfiles = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/user_profiles")
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/user_profiles`)
       .then((res) => {
         console.log(res);
         setUserProfiles(res.data);
@@ -20,7 +20,7 @@ export const useUserProfile = () => {
 
   const fetchUserProfile = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/user_profiles/new", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/user_profiles/new`, {
         withCredentials: true,
       })
       .then((res) => {

@@ -46,9 +46,12 @@ export const useChatMessage = () => {
   // Roomにあるメッセージを全て取得する(showアクションでカバー)
   const fetchChatMessage = useCallback((chat_room_id: number) => {
     axios
-      .get(`http://localhost:3000/api/v1/chat_messages/${chat_room_id}`, {
-        withCredentials: true,
-      })
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/chat_messages/${chat_room_id}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         setChatMessage(res.data);
@@ -59,7 +62,7 @@ export const useChatMessage = () => {
   const createChatMessage = useCallback((user_id: number) => {
     axios
       .post(
-        "http://localhost:3000/api/v1/chat_messages",
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/chat_messages`,
         {
           chat_message: {
             user_id: user_id,

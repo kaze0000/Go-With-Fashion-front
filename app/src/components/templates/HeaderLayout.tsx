@@ -23,11 +23,11 @@ export const HeaderLayout = memo((props: Props) => {
       >
         <GridItem
           area={"header"}
-          backgroundImage={"http://localhost:3000/fallback/texture.png"}
+          backgroundImage={`${process.env.REACT_APP_SERVER_URL}/fallback/texture.png`}
           position="relative"
         >
           <Image
-            src="http://localhost:3000/fallback/logo.png"
+            src={`${process.env.REACT_APP_SERVER_URL}/fallback/logo.png`}
             position={"absolute"}
             left="5%"
             top={"50%"}

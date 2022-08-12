@@ -52,7 +52,7 @@ const Mypage = () => {
 
   const onClickTagCloseButton = (brand_id: any) => {
     axios
-      .delete(`http://localhost:3000/api/v1/brands/${brand_id}`, {
+      .delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/brands/${brand_id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -94,7 +94,7 @@ const Mypage = () => {
                   src={
                     userImage
                       ? userImage.image.url
-                      : "http://localhost:3000/fallback/default.png"
+                      : `${process.env.REACT_APP_SERVER_URL}/fallback/default.png`
                   }
                 />
               )}

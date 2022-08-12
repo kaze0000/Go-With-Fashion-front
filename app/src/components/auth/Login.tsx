@@ -12,7 +12,7 @@ export default function Registration(props: {
     // Railsにデータを渡す
     axios
       .post(
-        "http://localhost:3000/api/v1/login",
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/login`,
         {
           // ユーザオブジェクト
           user: {

@@ -39,7 +39,7 @@ const UserProfileForm = (props: any) => {
     const sendFormData = () => {
       axios
         .post(
-          "http://localhost:3000/api/v1/user_profiles",
+          `${process.env.REACT_APP_SERVER_URL}/api/v1/user_profiles`,
           {
             user_profile: {
               name: name,

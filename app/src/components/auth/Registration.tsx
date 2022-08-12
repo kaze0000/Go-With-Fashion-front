@@ -12,7 +12,7 @@ export default function Registration(props: {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     axios
       .post(
-        "http://localhost:3000/api/v1/signup",
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/signup`,
         {
           // ユーザオブジェクト
           user: {

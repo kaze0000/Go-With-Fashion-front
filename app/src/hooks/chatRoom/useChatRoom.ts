@@ -23,7 +23,7 @@ export const useChatRoom = () => {
 
   const fetchChatRooms = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/chat_rooms", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/chat_rooms`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -44,9 +44,12 @@ export const useChatRoom = () => {
   const fetchChatRoom = useCallback((chat_room_id: number) => {
     console.log(chat_room_id);
     axios
-      .get(`http://localhost:3000/api/v1/chat_rooms/${chat_room_id}`, {
-        withCredentials: true,
-      })
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/chat_rooms/${chat_room_id}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         setChatRoom(res.data);
@@ -57,7 +60,7 @@ export const useChatRoom = () => {
   const createChatRoom = useCallback((user_id: number) => {
     axios
       .post(
-        "http://localhost:3000/api/v1/chat_rooms",
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/chat_rooms`,
         {
           user_id: user_id,
         },

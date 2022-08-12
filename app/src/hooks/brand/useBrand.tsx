@@ -8,7 +8,7 @@ export const useBrand = () => {
 
   const fetchBrands = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/brands", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/brands`, {
         withCredentials: true,
       })
       .then((res) => {

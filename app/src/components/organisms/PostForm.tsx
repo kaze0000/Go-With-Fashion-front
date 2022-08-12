@@ -85,7 +85,7 @@ const PostForm = (props: any) => {
     const sendFormData = () => {
       axios
         .post(
-          "http://localhost:3000/api/v1/posts",
+          `${process.env.REACT_APP_SERVER_URL}/api/v1/posts`,
           {
             post: {
               body: body,

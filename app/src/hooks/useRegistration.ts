@@ -12,7 +12,7 @@ export const useRegistration = () => {
   const registerUser = useCallback((user: User) => {
     axios
       .post(
-        "http://localhost:3000/api/v1/signup",
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/signup`,
         {
           user: {
             email: user.email,

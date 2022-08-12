@@ -25,7 +25,7 @@ const UserImageForm = memo((props: any) => {
     };
 
     const sendFormData = () => {
-      const url = "http://localhost:3000/api/v1/user_images";
+      const url = `${process.env.REACT_APP_SERVER_URL}/api/v1/user_images`;
       const newData = createFormData();
       axios
         .post(url, newData, {

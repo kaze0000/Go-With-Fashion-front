@@ -20,7 +20,7 @@ export const usePost = () => {
 
   const fetchPosts = useCallback(() => {
     axios
-      .get("http://localhost:3000/api/v1/posts", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -38,7 +38,7 @@ export const usePost = () => {
 
   const deletePost = useCallback((post_id: number) => {
     axios
-      .delete(`http://localhost:3000/api/v1/posts/${post_id}`, {
+      .delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${post_id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -50,7 +50,7 @@ export const usePost = () => {
 
   const fetchPost = useCallback((post_id: any) => {
     axios
-      .get(`http://localhost:3000/api/v1/posts/${post_id}`, {
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${post_id}`, {
         withCredentials: true,
       })
       .then((res) => {
