@@ -1,7 +1,0 @@
-build:
-  docker:
-    front: Dockerfile
-  config:
-    NODE_ENV: production
-run:
-  front: sh -c "npm start"
