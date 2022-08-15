@@ -1,10 +1,14 @@
 FROM node:16.16.0-alpine
 WORKDIR /usr/src/app
 
-COPY ["app/package.json","app/package-lock.json", "./"]
+ARG REACT_APP_SERVER_URL
 
-RUN npm install -g npm@8.17.0
-RUN npm install -g react-scripts
-RUN npm install --global typescript
+ENV REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}
 
-COPY . .
+# COPY ["app/package.json","app/package-lock.json", "./"]
+
+# RUN npm install -g npm@8.17.0
+# RUN npm install -g react-scripts
+# RUN npm install --global typescript
+
+# COPY . .
